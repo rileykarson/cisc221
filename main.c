@@ -1,3 +1,5 @@
-int main(){
+#include "win.h"
 
+int main(){
+	
 }

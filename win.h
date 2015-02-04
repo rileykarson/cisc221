@@ -1,0 +1,1 @@
+int win(int *arr, int rows, int columns, int position);
