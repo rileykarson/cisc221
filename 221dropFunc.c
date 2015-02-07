@@ -1,3 +1,5 @@
+#include "221dropFunc.h"
+
 int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn){
 	int stopFlag = 0;
 	int index = dropColumn-1;

@@ -1,4 +1,8 @@
 #include "win.h"
+#include "221dropFunc.h"
+#include "inputFunctions.h"
+#include "ascii.h"
+#include "array.h"
 
 /*
 	* Main Function

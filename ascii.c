@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "ascii.h"
 
 void ascii(int *arr, int rows, int columns)
 {

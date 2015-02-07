@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "array.h"
 
 int* makeArray(rows, columns)
 {

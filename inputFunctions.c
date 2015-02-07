@@ -1,4 +1,4 @@
-#include <startInputFunction.h>
+#include "inputFunctions.h"
 /*initialPrompt takes pointers to column, row and symbol variables, and
 prompts the user for these values and updates the values at the pointers*/
 int initialPrompt(int *columns, int *rows, char *symbol){
