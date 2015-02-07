@@ -20,7 +20,7 @@ int main(){
 	int win = 0;
 	while(win == 0){
 		int dropCol = promptForNextDrop(columns);
-		int pos = pieceDrop(arr, row, column, dropCol);
+		int pos = pieceDrop(arr, rows, columns, dropCol);
 		win = win(arr, rows, columns, pos);
 		ascii(arr);
 	}
