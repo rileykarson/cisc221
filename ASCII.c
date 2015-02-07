@@ -1,9 +1,7 @@
 #include <stdio.h>
 
-int main()
+void ascii(int *arr, int rows, int columns)
 {
-	int inputCol = 10;
-	int inputRow = 10; 
 	int outDummy = 0;
 	int innerDummy = 0; 
 	int topLine = inputCol;
@@ -25,11 +23,6 @@ int main()
 			{
 				printf("%s", "|__|");
 			}
-		
 		printf("\n");//Generates new line
-		
 	}
-	
-	return 0;
-	
 }
