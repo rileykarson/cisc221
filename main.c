@@ -17,12 +17,12 @@ int main(){
 	//Resources modified in place.
 	initalPrompt(&rows, &columns, &symbol);
 	int *arr = makeArray(rows, columns);
-	int win = 0;
-	while(win == 0){
+	int winFlag = 0;
+	while(winFlag == 0){
 		int dropCol = promptForNextDrop(columns);
 		int pos = pieceDrop(arr, rows, columns, dropCol);
-		win = win(arr, rows, columns, pos);
-		ascii(arr);
+		winFlag = win(arr, rows, columns, pos);
+		ascii(arr, rows, columns);
 	}
 	return 0;
 }
