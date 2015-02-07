@@ -1,0 +1,1 @@
+gcc -o connect4 main.c ascii.c inputFunctions.c array.c 221dropFunc.c win.c

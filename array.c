@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "array.h"
 
-int* makeArray(rows, columns)
+int* makeArray(int rows, int columns)
 {
 	int arraySize = rows*columns;
 	int baseArray[arraySize];

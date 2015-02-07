@@ -1,1 +1,1 @@
-int* makeArray(rows, columns);
+int* makeArray(int rows, int columns);

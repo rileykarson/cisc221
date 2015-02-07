@@ -15,7 +15,7 @@ int main(){
 	int columns;
 	char symbol;
 	//Resources modified in place.
-	initalPrompt(&rows, &columns, &symbol);
+	initialPrompt(&rows, &columns, &symbol);
 	int *arr = makeArray(rows, columns);
 	int winFlag = 0;
 	while(winFlag == 0){

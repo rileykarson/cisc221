@@ -1,5 +1,5 @@
 #include "win.h"
-#include <stdio.c>
+#include <stdio.h>
 
 #define UP 1
 #define DOWN -1
@@ -32,6 +32,7 @@ int win(int *arr, int rows, int columns, int position){
 int checkSpaces(int *arr, int rows, int columns, int position, int vshift, int hshift) {
 	int pos = position;
 	int counter = 0;
+	int i = 0;
 	while (pos > 0 && pos < rows*columns){
 		pos = pos + (rows*vshift), hshift;
 		printf("Checking %d", pos);
