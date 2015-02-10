@@ -84,5 +84,5 @@ int promptForNextDrop(int numCols){
                         scanCorrect = 1;
                 }
         }
-return numCols;
+	return dropCol;
 }

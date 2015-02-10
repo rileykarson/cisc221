@@ -3,6 +3,7 @@
 int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn, int playCount){
 	int stopFlag = 0;
 	int index = dropColumn-1;
+	printf("%d\n", index);
 	while (stopFlag == 0){
 		if  ((index+arrayColumn) >= (arrayRow*arrayColumn)){
 			if ((playCount%2)==0){
