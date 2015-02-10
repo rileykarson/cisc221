@@ -24,7 +24,7 @@ int main(){
 		int dropCol = promptForNextDrop(columns);
 		int pos = pieceDrop(arr, rows, columns, dropCol, playCount);
 		winFlag = win(arr, rows, columns, pos);
-		ascii(arr, rows, columns);
+		ascii(arr, rows, columns, symbol1, symbol2);
 		playCount += 1;
 	}
 	return 0;
