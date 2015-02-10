@@ -41,7 +41,7 @@ int checkSpaces(int *arr, int rows, int columns, int position, int vshift, int h
 	horizontal = horizontal + hshift;
 	vertical = vertical + vshift;
 	pos = horizontal + vertical*columns;
-	while (;;){
+	while (1 > 0){
 		if(pos < 0 || pos >= rows*columns) {
 			break;
 		}
