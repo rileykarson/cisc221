@@ -1,23 +1,23 @@
 #include "221dropFunc.h"
-
+#include <stdio.h>
 int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn, int playCount){
 	int stopFlag = 0;
 	int index = dropColumn-1;
 	while (stopFlag == 0){
 		if  ((index+arrayColumn) >= (arrayRow*arrayColumn)){
 			if ((playCount%2)==0){
-				myArray[index] = 1;
+				myArray[index] = 2;
 				stopFlag = 1;
 			else{
-				myArray[index] = 2;
+				myArray[index] = 1;
 				stopFlag = 1;
 			}
 		else if ((myArray[index+arrayColumn] == 1) || (myArray[index+arrayColumn] == 2)){
 			if ((playCount%2)==0){
-				myArray[index] = 1;
+				myArray[index] = 2;
 				stopFlag = 1;
 			}else{
-				myArray[index] = 2;
+				myArray[index] = 1;
 				stopFlag = 1;
 			}
 		}			
@@ -25,5 +25,6 @@ int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn, int p
 			index+=arrayColumn;
 		}
 	}
+	printf("%d\n", index);
 	return index;
 }
