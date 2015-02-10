@@ -28,7 +28,7 @@ void ascii(int *arr, int rows, int columns, char symbol1, char symbol2 )
 				}
 				if (arr[dummy] == 2)
 				{
-					printf("%s", symbol2)
+					printf("%s", symbol2);
 				}
 				else 
 				{
