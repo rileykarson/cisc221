@@ -38,7 +38,7 @@ int initialPrompt(int *columns, int *rows, char *symbol1, char *symbol2){
         scanCorrect = 0;
         printf("Enter the symbol that player 1 would like to play with: ");
         while (scanCorrect == 0){
-                scanCheck = scanf(" %c",symbol);
+                scanCheck = scanf(" %c",symbol1);
                 fgetc(stdin);
                 if (scanCheck != 1){
                         printf("Incompatible input please enter a new symbol: ");
@@ -51,7 +51,7 @@ int initialPrompt(int *columns, int *rows, char *symbol1, char *symbol2){
         scanCorrect = 0;
         printf("Enter the symbol that player 2 would like to play with: ");
         while (scanCorrect == 0){
-                scanCheck = scanf(" %c",symbol);
+                scanCheck = scanf(" %c",symbol2);
                 fgetc(stdin);
                 if (scanCheck != 1){
                         printf("Incompatible input please enter a new symbol: ");
