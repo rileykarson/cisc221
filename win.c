@@ -20,7 +20,10 @@ int win(int *arr, int rows, int columns, int position){
 	int diagonalBeta = 0; //Top Left to Bottom Right
 
 	vertical = 1 + checkSpaces(arr, rows, columns, position, UP, NOMOVEMENT) + checkSpaces(arr, rows, columns, position, DOWN, NOMOVEMENT);
-	return vertical;
+	horizontal = 1 + checkSpaces(arr, rows, columns, position, NOMOVEMENT, LEFT) + checkSpaces(arr, rows, columns, position, NOMOVEMENT, RIGHT);
+	diagonalAlpha = 1 + checkSpaces(arr, rows, columns, position, UP, RIGHT) + checkSpaces(arr, rows, columns, position, DOWN, LEFT);
+	horizontal = 1 + checkSpaces(arr, rows, columns, position, DOWN, RIGHT) + checkSpaces(arr, rows, columns, position, UP, LEFT);
+	return (vertical >= 4) || (horizontal >= 4) || (diagonalAlpha >= 4) || (diagonalBeta >= 4);
 }
 
 /*
@@ -33,9 +36,22 @@ int checkSpaces(int *arr, int rows, int columns, int position, int vshift, int h
 	int pos = position;
 	int counter = 0;
 	int i = 0;
-	while (pos > 0 && pos < rows*columns){
-		pos = pos + (rows*vshift), hshift;
+	int horizontal = position%columns;
+	int vertical = position/columns;
+	horizontal = horizontal + hshift;
+	vertical = vertical + vshift;
+	pos = horizontal + vertical*columns;
+	while (;;){
+		if(pos < 0 || pos >= rows*columns) {
+			break;
+		}
+		if(horizontal < 0 || horizontal > columns) {
+			break;
+		}
 		printf("Checking %d", pos);
+		horizontal = horizontal + hshift;
+		vertical = vertical + vshift;
+		pos = horizontal + vertical*columns;
 		i = i + 1;
 	}
 	return i;
