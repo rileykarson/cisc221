@@ -1,5 +1,5 @@
 #include "221dropFunc.h"
-
+#include <stdio.h>
 int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn, int playCount){
 	int stopFlag = 0;
 	int index = dropColumn-1;
@@ -29,5 +29,6 @@ int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn, int p
 			index += dropColumn;
 		}
 	}
+	printf("%d\n", index);
 	return index;
 }
