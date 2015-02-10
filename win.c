@@ -34,6 +34,7 @@ int win(int *arr, int rows, int columns, int position){
 */
 int checkSpaces(int *arr, int rows, int columns, int position, int vshift, int hshift) {
 	int pos = position;
+	int piecetype = arr[pos];
 	int counter = 0;
 	int i = 0;
 	int horizontal = position%columns;
@@ -48,7 +49,9 @@ int checkSpaces(int *arr, int rows, int columns, int position, int vshift, int h
 		if(horizontal < 0 || horizontal > columns) {
 			break;
 		}
-		printf("Checking %d", pos);
+		if (arr[pos] != piecetype) {
+			break;
+		}
 		horizontal = horizontal + hshift;
 		vertical = vertical + vshift;
 		pos = horizontal + vertical*columns;
