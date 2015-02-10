@@ -13,16 +13,19 @@
 int main(){
 	int rows;
 	int columns;
-	char symbol;
+	char symbol1;
+	char symbol2;
 	//Resources modified in place.
-	initialPrompt(&rows, &columns, &symbol);
+	initialPrompt(&rows, &columns, &symbol1, &symbol2);
 	int *arr = makeArray(rows, columns);
 	int winFlag = 0;
+	int playCount = 1;
 	while(winFlag == 0){
 		int dropCol = promptForNextDrop(columns);
-		int pos = pieceDrop(arr, rows, columns, dropCol);
+		int pos = pieceDrop(arr, rows, columns, dropCol, playCount);
 		winFlag = win(arr, rows, columns, pos);
 		ascii(arr, rows, columns);
+		playCount += 1;
 	}
 	return 0;
 }
