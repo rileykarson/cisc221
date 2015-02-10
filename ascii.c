@@ -19,7 +19,7 @@ void ascii(int *arr, int rows, int columns, char symbol1, char symbol2 )
 				{
 					printf("|%c|", symbol1 );
 				}
-				if (arr[vpos*columns + hpos] == 2)
+				else if (arr[vpos*columns + hpos] == 2)
 				{
 					printf("|%c|", symbol2);
 				}
