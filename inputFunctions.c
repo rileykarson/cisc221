@@ -1,7 +1,7 @@
 #include "inputFunctions.h"
 #include <stdio.h>
 
-int initialPrompt(int *columns, int *rows, char *symbol){
+int initialPrompt(int *columns, int *rows, char *symbol1, char *symbol2){
         printf("Welcome to connect 4!\n");
         int scanCorrect = 0;//signals that the loop to stop if scanf worked
         int scanCheck;//keeps track of return value of scanf
@@ -36,7 +36,20 @@ int initialPrompt(int *columns, int *rows, char *symbol){
         }
 
         scanCorrect = 0;
-        printf("Enter the symbol that you would like to play with: ");
+        printf("Enter the symbol that player 1 would like to play with: ");
+        while (scanCorrect == 0){
+                scanCheck = scanf(" %c",symbol);
+                fgetc(stdin);
+                if (scanCheck != 1){
+                        printf("Incompatible input please enter a new symbol: ");
+                }
+                else {
+                        scanCorrect = 1;
+                }
+        }
+
+        scanCorrect = 0;
+        printf("Enter the symbol that player 2 would like to play with: ");
         while (scanCorrect == 0){
                 scanCheck = scanf(" %c",symbol);
                 fgetc(stdin);
