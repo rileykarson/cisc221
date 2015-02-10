@@ -8,10 +8,12 @@ int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn, int p
 			if ((playCount%2)==0){
 				myArray[index] = 2;
 				stopFlag = 1;
+			}
 			else{
 				myArray[index] = 1;
 				stopFlag = 1;
 			}
+		}
 		else if ((myArray[index+arrayColumn] == 1) || (myArray[index+arrayColumn] == 2)){
 			if ((playCount%2)==0){
 				myArray[index] = 2;
