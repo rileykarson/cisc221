@@ -1,1 +1,1 @@
-void ascii(int *arr, int rows, int columns);
+void ascii(int *arr, int rows, int columns, char symbol1, char symbol2);

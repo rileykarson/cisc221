@@ -1,6 +1,6 @@
 /*initialPrompt takes pointers to column, row and symbol variables, and
 prompts the user for these values and updates the values at the pointers*/
-int initialPrompt(int *columns, int *rows, char *symbol);
+int initialPrompt(int *columns, int *rows, char *symbol1, char *symbol2);
 
 /*prompt for numCols takes an int number of columns in the grid, prompts the user for column
 that they would like to drop the piece and returns that column */

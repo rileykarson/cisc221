@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "ascii.h"
 
-void ascii(int *arr, int rows, int columns)
+void ascii(int *arr, int rows, int columns, char symbol1, char symbol2 )
 {
 	int outDummy = 0;
 	int innerDummy = 0; 
@@ -22,7 +22,20 @@ void ascii(int *arr, int rows, int columns)
 		printf("\n");
 		for( dummy = 0; dummy < columns; dummy++)
 			{
-				printf("%s", "|__|");
+				if (arr[dummy] == 1)
+				{
+					printf("%s", symbol1 );
+				}
+				if (arr[dummy] == 2)
+				{
+					printf("%s", symbol2)
+				}
+				else 
+				{
+					printf("%s", "|__|");
+				}
+
+				
 			}
 		printf("\n");//Generates new line
 	}
