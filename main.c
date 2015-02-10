@@ -23,9 +23,11 @@ int main(){
 	while(winFlag == 0){
 		int dropCol = promptForNextDrop(columns);
 		int pos = pieceDrop(arr, rows, columns, dropCol, playCount);
-		winFlag = win(arr, rows, columns, pos);
-		ascii(arr, rows, columns, symbol1, symbol2);
-		playCount += 1;
+		if (pos > 0){
+			winFlag = win(arr, rows, columns, pos);
+			ascii(arr, rows, columns, symbol1, symbol2);
+			playCount += 1;
+		}
 	}
 	return 0;
 }

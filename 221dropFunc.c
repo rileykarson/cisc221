@@ -5,6 +5,7 @@ int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn, int p
 	int index = dropColumn-1;
 	printf("%d\n", index);
 	while (stopFlag == 0){
+		
 		if  ((index+arrayColumn) >= (arrayRow*arrayColumn)){
 			if ((playCount%2)==0){
 				myArray[index] = 2;
@@ -15,7 +16,10 @@ int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn, int p
 				stopFlag = 1;
 			}
 		}
-		else if ((myArray[index+arrayColumn] == 1) || (myArray[index+arrayColumn] == 2)){
+		else if ((myArray[index+arrayColumn]) != 0){
+			if ((myArray[index]) != 0){
+				return 0;
+			}
 			if ((playCount%2)==0){
 				myArray[index] = 2;
 				stopFlag = 1;
@@ -30,4 +34,6 @@ int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn, int p
 	}
 	printf("%d\n", index);
 	return index;
+
 }
+
