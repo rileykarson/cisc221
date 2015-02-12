@@ -22,7 +22,7 @@ int win(int *arr, int rows, int columns, int position){
 	vertical = 1 + checkSpaces(arr, rows, columns, position, UP, NOMOVEMENT) + checkSpaces(arr, rows, columns, position, DOWN, NOMOVEMENT);
 	horizontal = 1 + checkSpaces(arr, rows, columns, position, NOMOVEMENT, LEFT) + checkSpaces(arr, rows, columns, position, NOMOVEMENT, RIGHT);
 	diagonalAlpha = 1 + checkSpaces(arr, rows, columns, position, UP, RIGHT) + checkSpaces(arr, rows, columns, position, DOWN, LEFT);
-	horizontal = 1 + checkSpaces(arr, rows, columns, position, DOWN, RIGHT) + checkSpaces(arr, rows, columns, position, UP, LEFT);
+	diagonalBeta = 1 + checkSpaces(arr, rows, columns, position, DOWN, RIGHT) + checkSpaces(arr, rows, columns, position, UP, LEFT);
 	return (vertical >= 4) || (horizontal >= 4) || (diagonalAlpha >= 4) || (diagonalBeta >= 4);
 }
 

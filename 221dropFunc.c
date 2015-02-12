@@ -18,7 +18,7 @@ int pieceDrop(int *myArray, int arrayRow, int arrayColumn, int dropColumn, int p
 		}
 		else if ((myArray[index+arrayColumn]) != 0){
 			if ((myArray[index]) != 0){
-				return 0;
+				return -1;
 			}
 			if ((playCount%2)==0){
 				myArray[index] = 2;

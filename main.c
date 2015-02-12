@@ -3,6 +3,7 @@
 #include "inputFunctions.h"
 #include "ascii.h"
 #include "array.h"
+#include "stdio.h"
 
 /*
 	* Main Function
@@ -23,11 +24,14 @@ int main(){
 	while(winFlag == 0){
 		int dropCol = promptForNextDrop(columns);
 		int pos = pieceDrop(arr, rows, columns, dropCol, playCount);
-		if (pos > 0){
+		if (pos >= 0){
 			winFlag = win(arr, rows, columns, pos);
-			ascii(arr, rows, columns, symbol1, symbol2);
 			playCount += 1;
 		}
+		else{
+			printf("Please enter a not full column\n");
+		}
+		ascii(arr, rows, columns, symbol1, symbol2);
 	}
 	return 0;
 }
