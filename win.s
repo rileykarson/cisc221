@@ -20,7 +20,7 @@ win:
 	@ frame_needed = 1, uses_anonymous_args = 0
 	stmfd	sp!, {r4, fp, lr} @(
 	add	fp, sp, #8
-	sub	sp, sp, #44 @handles moving the frame/stack pointer.
+	sub	sp, sp, #44 @handles moving the frame/stack pointer.)
 	str	r0, [fp, #-32] @pointer to arr
 	str	r1, [fp, #-36] @rows
 	str	r2, [fp, #-40] @columns
@@ -34,94 +34,94 @@ win:
 	mov	r3, #0
 	str	r3, [fp, #-28] @ diagonalBeta = 0
 	mov	r3, #1 @(
-	str	r3, [sp, #0]
+	str	r3, [sp, #0] @loads 1 into the stack pointer
 	mov	r3, #0
-	str	r3, [sp, #4]
-	ldr	r0, [fp, #-32]
-	ldr	r1, [fp, #-36]
-	ldr	r2, [fp, #-40]
-	ldr	r3, [fp, #-44]
-	bl	checkSpaces
+	str	r3, [sp, #4] @loads 0 into the stack pointer
+	ldr	r0, [fp, #-32]  @load arr
+	ldr	r1, [fp, #-36] @load rows
+	ldr	r2, [fp, #-40] @load columns
+	ldr	r3, [fp, #-44] @load positions
+	bl	checkSpaces @checkSpaces(arr, rows, columns, position, UP, NOMOVEMENT)
 	mov	r3, r0
 	add	r4, r3, #1
 	mvn	r3, #0
-	str	r3, [sp, #0]
+	str	r3, [sp, #0] @loads -1 into the stack pointer
 	mov	r3, #0
-	str	r3, [sp, #4]
-	ldr	r0, [fp, #-32]
-	ldr	r1, [fp, #-36]
-	ldr	r2, [fp, #-40]
-	ldr	r3, [fp, #-44]
-	bl	checkSpaces
+	str	r3, [sp, #4] @loads 0 into the stack pointer
+	ldr	r0, [fp, #-32] @load arr
+	ldr	r1, [fp, #-36] @load rows
+	ldr	r2, [fp, #-40] @load columns
+	ldr	r3, [fp, #-44] @load positions
+	bl	checkSpaces @ checkSpaces(arr, rows, columns, position, DOWN, NOMOVEMENT)
 	mov	r3, r0
 	add	r3, r4, r3
 	str	r3, [fp, #-16] @  vertical = 1 + checkSpaces(arr, rows, columns, position, UP, NOMOVEMENT) + checkSpaces(arr, rows, columns, position, DOWN, NOMOVEMENT);)
 	mov	r3, #0 @(
-	str	r3, [sp, #0]
+	str	r3, [sp, #0] @loads 0 into the stack pointer
 	mvn	r3, #0
-	str	r3, [sp, #4]
-	ldr	r0, [fp, #-32]
-	ldr	r1, [fp, #-36]
-	ldr	r2, [fp, #-40]
-	ldr	r3, [fp, #-44]
-	bl	checkSpaces
+	str	r3, [sp, #4] @loads -1 into the stack pointer
+	ldr	r0, [fp, #-32] @load arr
+	ldr	r1, [fp, #-36] @load rows
+	ldr	r2, [fp, #-40] @load columns
+	ldr	r3, [fp, #-44] @load positions
+	bl	checkSpaces @ checkSpaces(arr, rows, columns, position, NOMOVEMENT, LEFT)
 	mov	r3, r0
 	add	r4, r3, #1
 	mov	r3, #0
-	str	r3, [sp, #0]
+	str	r3, [sp, #0] @loads 0 into the stack pointer
 	mov	r3, #1
-	str	r3, [sp, #4]
-	ldr	r0, [fp, #-32]
-	ldr	r1, [fp, #-36]
-	ldr	r2, [fp, #-40]
-	ldr	r3, [fp, #-44]
-	bl	checkSpaces
+	str	r3, [sp, #4] @loads 1 into the stack pointer
+	ldr	r0, [fp, #-32] @load arr
+	ldr	r1, [fp, #-36] @load rows
+	ldr	r2, [fp, #-40] @load columns
+	ldr	r3, [fp, #-44] @load positions
+	bl	checkSpaces @ checkSpaces(arr, rows, columns, position, NOMOVEMENT, RIGHT)
 	mov	r3, r0
 	add	r3, r4, r3
 	str	r3, [fp, #-20] @ horizontal = 1 + checkSpaces(arr, rows, columns, position, NOMOVEMENT, LEFT) + checkSpaces(arr, rows, columns, position, NOMOVEMENT, RIGHT);)
 	mov	r3, #1 @(
-	str	r3, [sp, #0]
+	str	r3, [sp, #0] @loads 1 into the stack pointer
 	mov	r3, #1
-	str	r3, [sp, #4]
-	ldr	r0, [fp, #-32]
-	ldr	r1, [fp, #-36]
-	ldr	r2, [fp, #-40]
-	ldr	r3, [fp, #-44]
-	bl	checkSpaces
+	str	r3, [sp, #4] @loads 1 into the stack pointer
+	ldr	r0, [fp, #-32] @load arr
+	ldr	r1, [fp, #-36] @load rows
+	ldr	r2, [fp, #-40] @load columns
+	ldr	r3, [fp, #-44] @load positions
+	bl	checkSpaces @ checkSpaces(arr, rows, columns, position, UP, RIGHT)
 	mov	r3, r0
 	add	r4, r3, #1
 	mvn	r3, #0
-	str	r3, [sp, #0]
+	str	r3, [sp, #0] @loads -1 into the stack pointer
 	mvn	r3, #0
-	str	r3, [sp, #4]
-	ldr	r0, [fp, #-32]
-	ldr	r1, [fp, #-36]
-	ldr	r2, [fp, #-40]
-	ldr	r3, [fp, #-44]
-	bl	checkSpaces
+	str	r3, [sp, #4] @loads -1 into the stack pointer
+	ldr	r0, [fp, #-32] @load arr
+	ldr	r1, [fp, #-36] @load rows
+	ldr	r2, [fp, #-40] @load columns
+	ldr	r3, [fp, #-44] @load positions
+	bl	checkSpaces @ checkSpaces(arr, rows, columns, position, DOWN, LEFT)
 	mov	r3, r0
 	add	r3, r4, r3
 	str	r3, [fp, #-24] @  diagonalAlpha = 1 + checkSpaces(arr, rows, columns, position, UP, RIGHT) + checkSpaces(arr, rows, columns, position, DOWN, LEFT);)
 	mvn	r3, #0 @ (
-	str	r3, [sp, #0]
+	str	r3, [sp, #0] @loads -1 into the stack pointer
 	mov	r3, #1
-	str	r3, [sp, #4]
-	ldr	r0, [fp, #-32]
-	ldr	r1, [fp, #-36]
-	ldr	r2, [fp, #-40]
-	ldr	r3, [fp, #-44]
-	bl	checkSpaces
+	str	r3, [sp, #4] @loads 0 into the stack pointer
+	ldr	r0, [fp, #-32] @load arr
+	ldr	r1, [fp, #-36] @load rows
+	ldr	r2, [fp, #-40] @load columns
+	ldr	r3, [fp, #-44] @load positions
+	bl	checkSpaces @ checkSpaces(arr, rows, columns, position, DOWN, RIGHT) 
 	mov	r3, r0
 	add	r4, r3, #1
 	mov	r3, #1
-	str	r3, [sp, #0]
+	str	r3, [sp, #0] @loads 1 into the stack pointer
 	mvn	r3, #0
-	str	r3, [sp, #4]
-	ldr	r0, [fp, #-32]
-	ldr	r1, [fp, #-36]
-	ldr	r2, [fp, #-40]
-	ldr	r3, [fp, #-44]
-	bl	checkSpaces
+	str	r3, [sp, #4] @loads -1 into the stack pointer
+	ldr	r0, [fp, #-32] @load arr
+	ldr	r1, [fp, #-36] @load rows
+	ldr	r2, [fp, #-40] @load columns
+	ldr	r3, [fp, #-44] @load positions
+	bl	checkSpaces @ checkSpaces(arr, rows, columns, position, UP, LEFT)
 	mov	r3, r0
 	add	r3, r4, r3
 	str	r3, [fp, #-28] @  diagonalBeta = 1 + checkSpaces(arr, rows, columns, position, DOWN, RIGHT) + checkSpaces(arr, rows, columns, position, UP, LEFT);)
@@ -201,7 +201,7 @@ checkSpaces:
 	ldr	r3, [fp, #-16]
 	add	r3, r2, r3
 	str	r3, [fp, #-8] @ pos = horizontal + vertical*columns;)
-.L8:
+.L8: @breaks out of loop when conditions are met
 	ldr	r3, [fp, #-8] @(
 	cmp	r3, #0
 	blt	.L6 @ pos < 0)
@@ -226,7 +226,7 @@ checkSpaces:
 	ldr	r3, [fp, #-24]
 	cmp	r2, r3
 	bne	.L9 @ arr[pos] != piecetype)
-.L7:
+.L7: @primary loop logic
 	ldr	r2, [fp, #-16] @( 
 	ldr	r3, [fp, #8]
 	add	r3, r2, r3
