@@ -66,164 +66,164 @@ initialPrompt:
 	stmfd	sp!, {fp, lr}
 	add	fp, sp, #4
 	sub	sp, sp, #24
-	str	r0, [fp, #-16]
-	str	r1, [fp, #-20]
-	str	r2, [fp, #-24]
-	str	r3, [fp, #-28]
-	ldr	r0, .L18
-	bl	puts
-	mov	r3, #0
-	str	r3, [fp, #-8]
-	ldr	r3, .L18+4
+	str	r0, [fp, #-16] @columns
+	str	r1, [fp, #-20] @rows
+	str	r2, [fp, #-24] @symbol1
+	str	r3, [fp, #-28] @symbol2
+	ldr	r0, .L18 @(
+	bl	puts     @(printf("Welcome to connect 4! \n"))
+	mov	r3, #0        @(
+	str	r3, [fp, #-8] @ scanCorrect = 0)
+	ldr	r3, .L18+4    @(
 	mov	r0, r3
-	bl	printf
+	bl	printf        @ printf("Enter number of columns in grid: "))
 	b	.L2
 .L6:
-	ldr	r3, .L18+8
+	ldr	r3, .L18+8     @(
 	mov	r0, r3
 	ldr	r1, [fp, #-16]
 	bl	__isoc99_scanf
-	str	r0, [fp, #-12]
+	str	r0, [fp, #-12] @ scanCheck = scanf("%d", columns))
 	ldr	r3, .L18+12
 	ldr	r3, [r3, #0]
 	mov	r0, r3
 	bl	fgetc
-	ldr	r3, [fp, #-12]
-	cmp	r3, #1
+	ldr	r3, [fp, #-12] @(
+	cmp	r3, #1 	       @ if (scanCheck == 1))
 	beq	.L3
 	ldr	r3, .L18+16
 	mov	r0, r3
 	bl	printf
 	b	.L2
 .L3:
-	ldr	r3, [fp, #-16]
+	ldr	r3, [fp, #-16] @(
 	ldr	r3, [r3, #0]
-	cmp	r3, #10
+	cmp	r3, #10        @ if(columns > 10))
 	bgt	.L4
-	ldr	r3, [fp, #-16]
+	ldr	r3, [fp, #-16] @(
 	ldr	r3, [r3, #0]
-	cmp	r3, #0
+	cmp	r3, #0         @ if columns < 1))
 	bgt	.L5
 .L4:
-	ldr	r3, .L18+20
+	ldr	r3, .L18+20 @(
 	mov	r0, r3
-	bl	printf
+	bl	printf      @ printf("column entered is out of bounds enter a column number between 1 and 1o inclusive: "))
 	b	.L2
 .L5:
-	mov	r3, #1
-	str	r3, [fp, #-8]
+	mov	r3, #1        @(
+	str	r3, [fp, #-8] @ scanCorrect = 1)
 .L2:
-	ldr	r3, [fp, #-8]
-	cmp	r3, #0
+	ldr	r3, [fp, #-8] @(
+	cmp	r3, #0        @ while scanCorrect == 0))
 	beq	.L6
-	mov	r3, #0
-	str	r3, [fp, #-8]
-	ldr	r3, .L18+24
+	mov	r3, #0        @(
+	str	r3, [fp, #-8] @ scanCorrect = 0))
+	ldr	r3, .L18+24   @(
 	mov	r0, r3
-	bl	printf
+	bl	printf        @ printf("Enter number of row in grid"))
 	b	.L7
 .L11:
-	ldr	r3, .L18+28
+	ldr	r3, .L18+28    @(
 	mov	r0, r3
 	ldr	r1, [fp, #-20]
 	bl	__isoc99_scanf
-	str	r0, [fp, #-12]
+	str	r0, [fp, #-12] @ scanCheck = scanf("%d", rows))
 	ldr	r3, .L18+12
 	ldr	r3, [r3, #0]
 	mov	r0, r3
 	bl	fgetc
-	ldr	r3, [fp, #-12]
-	cmp	r3, #1
+	ldr	r3, [fp, #-12] @(
+	cmp	r3, #1         @ if(scanCheck != 1))
 	beq	.L8
-	ldr	r3, .L18+32
+	ldr	r3, .L18+32    @(
 	mov	r0, r3
-	bl	printf
+	bl	printf         @ printf("incompatible input please enter a new row number: "))
 	b	.L7
 .L8:
-	ldr	r3, [fp, #-20]
+	ldr	r3, [fp, #-20] @(
 	ldr	r3, [r3, #0]
-	cmp	r3, #10
+	cmp	r3, #10        @ if(rows > 10))
 	bgt	.L9
-	ldr	r3, [fp, #-20]
+	ldr	r3, [fp, #-20] @(
 	ldr	r3, [r3, #0]
-	cmp	r3, #0
+	cmp	r3, #0         @ if(rows < 1))
 	bgt	.L10
 .L9:
-	ldr	r3, .L18+36
+	ldr	r3, .L18+36 @(
 	mov	r0, r3
-	bl	printf
+	bl	printf      @ printf("Rows entered is out of bounds enter a new row number between 1 and 10 inclusive: ))
 	b	.L7
 .L10:
-	mov	r3, #1
-	str	r3, [fp, #-8]
+	mov	r3, #1        @(
+	str	r3, [fp, #-8] @ scanCorrect = 1)
 .L7:
-	ldr	r3, [fp, #-8]
-	cmp	r3, #0
+	ldr	r3, [fp, #-8] @(
+	cmp	r3, #0        @ while(scanCorrect ==0))
 	beq	.L11
-	mov	r3, #0
-	str	r3, [fp, #-8]
-	ldr	r3, .L18+40
+	mov	r3, #0        @(
+	str	r3, [fp, #-8] @ scanCorrect = 0)
+	ldr	r3, .L18+40   @(
 	mov	r0, r3
-	bl	printf
+	bl	printf        @ printf("Enter the symbol that player 1 would like to play with: "))
 	b	.L12
 .L14:
-	ldr	r3, .L18+44
+	ldr	r3, .L18+44    @(
 	mov	r0, r3
 	ldr	r1, [fp, #-24]
 	bl	__isoc99_scanf
-	str	r0, [fp, #-12]
+	str	r0, [fp, #-12] @ scanCheck = scanf("%c", symbol))
 	ldr	r3, .L18+12
 	ldr	r3, [r3, #0]
 	mov	r0, r3
 	bl	fgetc
-	ldr	r3, [fp, #-12]
-	cmp	r3, #1
+	ldr	r3, [fp, #-12] @(
+	cmp	r3, #1         @ if(scanCheck != 1))
 	beq	.L13
-	ldr	r3, .L18+48
+	ldr	r3, .L18+48    @(
 	mov	r0, r3
-	bl	printf
+	bl	printf         @ printf("Incompatible input please enter a new symbol: "))
 	b	.L12
 .L13:
-	mov	r3, #1
-	str	r3, [fp, #-8]
+	mov	r3, #1        @(
+	str	r3, [fp, #-8] @ scanCorrect = 1)
 .L12:
-	ldr	r3, [fp, #-8]
-	cmp	r3, #0
+	ldr	r3, [fp, #-8] @(
+	cmp	r3, #0        @ while(scanCorrect ==0))
 	beq	.L14
-	mov	r3, #0
-	str	r3, [fp, #-8]
-	ldr	r3, .L18+52
+	mov	r3, #0        @(
+	str	r3, [fp, #-8] @ scanCorrect = 0)
+	ldr	r3, .L18+52   @(
 	mov	r0, r3
-	bl	printf
+	bl	printf        @printf("enter the symbol player 2 would like to play with: "))
 	b	.L15
 .L17:
-	ldr	r3, .L18+44
+	ldr	r3, .L18+44    @(
 	mov	r0, r3
 	ldr	r1, [fp, #-28]
 	bl	__isoc99_scanf
-	str	r0, [fp, #-12]
+	str	r0, [fp, #-12] @ scanCheck = scanf("%c",symbol2))
 	ldr	r3, .L18+12
 	ldr	r3, [r3, #0]
 	mov	r0, r3
 	bl	fgetc
-	ldr	r3, [fp, #-12]
-	cmp	r3, #1
+	ldr	r3, [fp, #-12] @(
+	cmp	r3, #1         @ if(scanCheck != 1)
 	beq	.L16
-	ldr	r3, .L18+48
+	ldr	r3, .L18+48 @(
 	mov	r0, r3
-	bl	printf
+	bl	printf      @ printf("Incompatible input please enter a new symbol: "))
 	b	.L15
 .L16:
-	mov	r3, #1
-	str	r3, [fp, #-8]
+	mov	r3, #1        @(
+	str	r3, [fp, #-8] @ scanCorrect = 1)
 .L15:
-	ldr	r3, [fp, #-8]
-	cmp	r3, #0
+	ldr	r3, [fp, #-8] @(   
+	cmp	r3, #0        @ while(scanCorrect = 0))
 	beq	.L17
-	mov	r3, #0
+	mov	r3, #0        @(
 	mov	r0, r3
 	sub	sp, fp, #4
-	ldmfd	sp!, {fp, pc}
+	ldmfd	sp!, {fp, pc} @ return 0)
 .L19:
 	.align	2
 .L18:
@@ -264,56 +264,56 @@ promptForNextDrop:
 	stmfd	sp!, {fp, lr}
 	add	fp, sp, #4
 	sub	sp, sp, #24
-	str	r0, [fp, #-24]
-	mov	r3, #0
-	str	r3, [fp, #-8]
-	ldr	r3, .L26
+	str	r0, [fp, #-24] @numCols
+	mov	r3, #0         @(
+	str	r3, [fp, #-8]  @ scanCorrect = 0)
+	ldr	r3, .L26       @(
 	mov	r0, r3
-	bl	printf
+	bl	printf         @ printf("Enter a column that you would like to drop the next piece"))
 	b	.L21
 .L25:
-	ldr	r2, .L26+4
+	ldr	r2, .L26+4     @(
 	sub	r3, fp, #16
 	mov	r0, r2
 	mov	r1, r3
 	bl	__isoc99_scanf
-	str	r0, [fp, #-12]
+	str	r0, [fp, #-12] @scanCheck = scanf("%d",&dropCol))
 	ldr	r3, .L26+8
 	ldr	r3, [r3, #0]
 	mov	r0, r3
 	bl	fgetc
-	ldr	r3, [fp, #-12]
-	cmp	r3, #1
+	ldr	r3, [fp, #-12] @(
+	cmp	r3, #1         @ if(scanCheck != 1))
 	beq	.L22
 	ldr	r3, .L26+12
 	mov	r0, r3
 	bl	printf
 	b	.L21
 .L22:
-	ldr	r3, [fp, #-16]
-	cmp	r3, #0
+	ldr	r3, [fp, #-16] @(
+	cmp	r3, #0         @ if(dropCol < 1))
 	ble	.L23
-	ldr	r2, [fp, #-16]
+	ldr	r2, [fp, #-16] @(
 	ldr	r3, [fp, #-24]
-	cmp	r2, r3
+	cmp	r2, r3         @ if(dropCol > numCols))
 	ble	.L24
 .L23:
-	ldr	r3, .L26+16
+	ldr	r3, .L26+16    @(
 	mov	r0, r3
-	ldr	r1, [fp, #-24]
-	bl	printf
+	ldr	r1, [fp, #-24] 
+	bl	printf         @ printf("Column entered is out of bounds please enter a column between 1 and %d inclusive: ", numCols))
 	b	.L21
 .L24:
-	mov	r3, #1
-	str	r3, [fp, #-8]
+	mov	r3, #1        @(
+	str	r3, [fp, #-8] @ scanCorrect = 1)
 .L21:
-	ldr	r3, [fp, #-8]
-	cmp	r3, #0
+	ldr	r3, [fp, #-8] @(
+	cmp	r3, #0        @ while(scanCorrect == 0))
 	beq	.L25
-	ldr	r3, [fp, #-16]
+	ldr	r3, [fp, #-16] @(
 	mov	r0, r3
 	sub	sp, fp, #4
-	ldmfd	sp!, {fp, pc}
+	ldmfd	sp!, {fp, pc}  @ return dropCol)
 .L27:
 	.align	2
 .L26:
