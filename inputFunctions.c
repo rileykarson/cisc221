@@ -1,6 +1,7 @@
 #include "inputFunctions.h"
 #include <stdio.h>
-
+//initialPrompt prompts players initially for how large they would like the connect 4 table and which symbol each player would 
+//like to use as their play piece
 int initialPrompt(int *columns, int *rows, char *symbol1, char *symbol2){
         printf("Welcome to connect 4!\n");
         int scanCorrect = 0;//signals that the loop to stop if scanf worked
@@ -24,13 +25,13 @@ int initialPrompt(int *columns, int *rows, char *symbol1, char *symbol2){
         while (scanCorrect == 0){
                 scanCheck = scanf("%d",rows);
                 fgetc(stdin);
-                if (scanCheck != 1){
+                if (scanCheck != 1){//improper input
                         printf("Incompatible input please enter a new row number: ");
                 }
                 else if ((*rows >10)||(*rows <1)){
                         printf("Rows entered is out of bounds enter a row number between 1 and 10 inclusive: ");
                 }
-                else {
+                else {//proper input
                         scanCorrect = 1;
                 }
         }
