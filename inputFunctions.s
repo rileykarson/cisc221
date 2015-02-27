@@ -89,7 +89,7 @@ initialPrompt:
 	mov	r0, r3
 	bl	fgetc
 	ldr	r3, [fp, #-12] @(
-	cmp	r3, #1 	       @ if (scanCheck == 1))
+	cmp	r3, #1 	       @ if (scanCheck != 1))
 	beq	.L3
 	ldr	r3, .L18+16
 	mov	r0, r3
@@ -151,7 +151,7 @@ initialPrompt:
 .L9:
 	ldr	r3, .L18+36 @(
 	mov	r0, r3
-	bl	printf      @ printf("Rows entered is out of bounds enter a new row number between 1 and 10 inclusive: ))
+	bl	printf      @ printf("Rows entered is out of bounds enter a new row number between 1 and 10 inclusive: "))
 	b	.L7
 .L10:
 	mov	r3, #1        @(
@@ -218,7 +218,7 @@ initialPrompt:
 	str	r3, [fp, #-8] @ scanCorrect = 1)
 .L15:
 	ldr	r3, [fp, #-8] @(   
-	cmp	r3, #0        @ while(scanCorrect = 0))
+	cmp	r3, #0        @ while(scanCorrect == 0))
 	beq	.L17
 	mov	r3, #0        @(
 	mov	r0, r3
